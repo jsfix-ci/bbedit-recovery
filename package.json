@@ -28,6 +28,14 @@
     "test": "jest",
     "coverage": "jest --coverage"
   },
+  "jest": {
+    "verbose": false,
+    "roots": [
+      "__tests__",
+      "bin",
+      "src"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codingChewie/bbedit-recovery.git"
