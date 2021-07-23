@@ -17,7 +17,7 @@ const cli = () => {
     .name(name)
     .description(description)
     .option('-d, --dest [folder]', 'Directory to be piped out to', process.cwd())
-    .action(async () => await main(program._optionValues.dest.trim()))
+    .action(async () => await main(program._optionValues.dest.trim(), true))
 
   program.parse(process.argv)
 }
