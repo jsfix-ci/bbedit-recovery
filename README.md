@@ -113,8 +113,14 @@ bbedit-recovery intro
 
 ### Help
 
-Documentation writing is soooo boring. If I add a feature and forget to update the README.md you can get a listing of the commands:
+Documentation writing is soooo boring. If I add a feature and forget to update the [README.md](https://github.com/codingChewie/bbedit-recovery/edit/main/README.md) you can get a listing of the commands:
 
 ```bash
 bbedit-recovery --help
 ```
+
+## Future Plans
+
+- [ ] Add exclusion parameters
+- [ ] Run off a `launchd`
+- [ ] Ability to push to a repo
