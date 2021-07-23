@@ -17,7 +17,11 @@ const cli = () => {
     .name(name)
     .description(description)
     .option('-d, --dest [folder]', 'Directory to be piped out to', process.cwd())
-    .action(async () => await main(program._optionValues.dest.trim(), true))
+    .option('-n, --name [string]', 'Optional name of the output directory', `bbedit-recovery`)
+    .action(async () => {
+      const { dest, name } = program._optionValues
+      await main(dest.trim(), name.trim(), true)
+    })
 
   program.parse(process.argv)
 }
