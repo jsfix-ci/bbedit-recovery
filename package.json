@@ -5,6 +5,7 @@
   "main": "bin/index.js",
   "bin": {
     "bbedit-recover": "bin/cli.js",
+    "bbedit-recovery": "bin/cli.js",
     "bbrec": "bin/cli.js"
   },
   "publishConfig": {
