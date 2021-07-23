@@ -1,0 +1,52 @@
+{
+  "name": "bbedit-recovery",
+  "version": "0.0.1",
+  "description": "NPM package that helps get settings from BBEdit",
+  "main": "bin/index.js",
+  "bin": {
+    "options": "bin/index.js",
+    "options-cli": "bin/cli.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "engines": {
+    "node": ">=14.0"
+  },
+  "os": [
+    "darwin",
+    "!linux",
+    "!win32"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codingChewie/bbedit-recovery.git"
+  },
+  "keywords": [
+    "BBEdit",
+    "recovery",
+    "Scripts",
+    "Stationary"
+  ],
+  "author": "codingChewie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codingChewie/bbedit-recovery/issues"
+  },
+  "homepage": "https://github.com/codingChewie/bbedit-recovery#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "commander": "^8.0.0",
+    "fs-extra": "^10.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
+  }
+}
