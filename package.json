@@ -34,6 +34,9 @@
       "__tests__",
       "bin",
       "src"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/__tests__/files"
     ]
   },
   "repository": {
