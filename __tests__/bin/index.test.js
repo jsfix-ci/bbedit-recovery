@@ -2,6 +2,7 @@ path = require('path')
 const fs = require('fs-extra')
 const tmp = require('tmp')
 const tmpObj = tmp.dirSync()
+const chalk = require('chalk')
 
 const br = require('../../bin/index')
 const { bbArray } = require('../files/bbeditDir')
@@ -10,13 +11,17 @@ const outDir = Math.floor(new Date().getTime() / 1000)
 // let tmpObj = {}
 // tmpObj.name = '/var/folders/46/2mnb3y294_n64b4dgd5pyjlwhr_knc/T/tmp-8034-tsCxzzKSEPB7'
 
-// KEEP
+jest.mock('chalk', () => ({
+  blue: jest.fn(),
+  green: jest.fn(),
+  white: jest.fn(),
+}))
+
 test('Create tmp object', async () => {
   await expect(tmpObj).toHaveProperty('name')
   await expect(tmpObj).toHaveProperty('removeCallback')
 })
 
-// KEEP
 test('Copy files and directories over to tmp', async () => {
   fs.removeSync(`${tmpObj.name}/.DS_Store`)
   await expect(dirLength(tmpObj.name) === 0).toEqual(true)
@@ -24,7 +29,6 @@ test('Copy files and directories over to tmp', async () => {
   await expect(dirLength(tmpObj.name) === 1).toEqual(true)
 })
 
-// KEEP
 test('Create empty directories', async () => {
   await expect(bbArray.length).toEqual(10)
   bbArray.map(item => {
@@ -54,39 +58,38 @@ test(`Test package copies to output directory`, async () => {
 test(`Test package console logs`, async () => {
   await br(`${tmpObj.name}`, outDir, true)
   await expect(typeof console.log).toBe('function')
-  // await expect(console.log).toBe(`BBEdit Recovery Completed\nFILES: ${outDir}`)
-  // await expect(console.log).toHaveBeenCalledWith(`BBEdit Recovery Completed\nFILES: ${outDir}`)
   fs.removeSync(`${tmpObj.name}/${outDir}`)
 })
 
-// KEEP
+test(`Test console log with spy`, async () => {
+  const spy = jest.spyOn(global.console, 'log')
+  chalk.blue.mockReturnValueOnce(`BBEdit Recovery Completed`)
+  chalk.green.mockReturnValueOnce(`\nFILES: `)
+  chalk.white.mockReturnValueOnce(`${tmpObj.name}/${outDir}\n`)
+  await br(`${tmpObj.name}`, outDir, true)
+  expect(global.console.log).toHaveBeenCalledWith(
+    `BBEdit Recovery Completed`,
+    `\nFILES: `,
+    `${tmpObj.name}/${outDir}\n`,
+  )
+  spy.mockRestore()
+  fs.removeSync(`${tmpObj.name}/${outDir}`)
+})
+
 test('Delete output directory in tmp', async () => {
   fs.removeSync(`${tmpObj.name}/${outDir}`)
   await expect(fs.existsSync(`${tmpObj.name}/${outDir}`)).toEqual(false)
 })
 
-// // KEEP
 test('Delete BBEdit in tmp directory', async () => {
   await expect(dirLength(tmpObj.name) === 1).toEqual(true)
   fs.removeSync(`${tmpObj.name}/BBEdit`)
   await expect(dirLength(tmpObj.name) === 0).toEqual(true)
 })
 
-// KEEP
 test('Remove tmp object', async () => {
   await tmpObj.removeCallback()
-  // const check = fs.existsSync(tmpObj.name)
   expect(fs.existsSync(tmpObj.name)).toEqual(false)
 })
 
-// KEEP
 const dirLength = route => fs.readdirSync(route).length
-
-// HELPERS
-
-// dir test contents
-// fs.readdir(tmpObj.name, (err, files) => {
-//   files.forEach(file => {
-//     console.log(file)
-//   })
-// })
