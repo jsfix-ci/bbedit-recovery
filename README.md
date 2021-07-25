@@ -1,13 +1,10 @@
 # BBEdit Recovery
 
-<!-- https://codeclimate.com/ -->
-<!-- ![Code Climate coverage](https://img.shields.io/codeclimate/coverage/codingChewie/bbedit-recovery) -->
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/codingChewie/bbedit-recovery) ![Code Climate issues](https://img.shields.io/codeclimate/issues/codingChewie/bbedit-recovery) ![Github code size](https://img.shields.io/github/languages/code-size/codingChewie/bbedit-recovery) ![GitHub issues](https://img.shields.io/github/issues/codingChewie/bbedit-recovery) ![GitHub last commit](https://img.shields.io/github/last-commit/codingChewie/bbedit-recovery) ![GitHub License](https://img.shields.io/github/license/codingChewie/bbedit-recovery) [![GitHub forks](https://img.shields.io/github/forks/codingChewie/bbedit-recovery)](https://github.com/codingChewie/bbedit-recovery/network) [![GitHub stars](https://img.shields.io/github/stars/codingChewie/bbedit-recovery)](https://github.com/codingChewie/bbedit-recovery/stargazers)
 
-![code size](https://img.shields.io/github/languages/code-size/codingChewie/bbedit-recovery) ![GitHub issues](https://img.shields.io/github/issues/codingChewie/bbedit-recovery) ![GitHub last commit](https://img.shields.io/github/last-commit/codingChewie/bbedit-recovery) ![GitHub Release Date](https://img.shields.io/github/release-date/codingChewie/bbedit-recovery)
+So over the last few years as a developer I've experienced three instances of [MacBook swollen battery](https://www.consumerreports.org/laptop-computers/some-macbook-pro-batteries-can-swell-what-you-need-to-know/) syndrome. I do not know if I'm just scripting too much, too many projects with `npx` calls for React :zany_face: , or just bad luck. Either way I've found over time I was manually copying over my BBEdit settings to my NAS so I could easily setup my replacement/loaner and in the process thought there has got to be a better way then manual and could this help anyone else :thinking: .
 
-So over the last few years as a developer I've experienced three instances of [MacBook swollen battery](https://www.consumerreports.org/laptop-computers/some-macbook-pro-batteries-can-swell-what-you-need-to-know/) syndrome. I do not know if I'm just scripting too much, too many projects with `npx` calls for React :zany_face: , or just bad luck. Either way I've found over time I was manually copying over my BBEdit settings to my NAS so I could easily setup my replacement or loaner and in the process thought there has got to be a better way then manual and could this help anyone else :thinking: .
-
-To resolve this headache and since I've enjoyed writing more in Node I thought it be fun to write a Node CLI. At the current release this is very basic but in my free time (if ever :roll_eyes: ) I'm thinking of building in a `launchd` setup that pushes to a repository or NAS.
+To resolve this headache and since I've enjoyed writing more in Node I thought it be fun to write a Node CLI. Currently this is very basic but in my free time (if ever :roll_eyes: ) I'm thinking of building in `launchd` support that pushes to a repository and/or NAS.
 
 ## Installation
 
