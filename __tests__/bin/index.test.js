@@ -50,30 +50,36 @@ test(`Test output directory is empty`, async () =>
   await expect(fs.readdirSync(`${tmpObj.name}/${outDir}`).length === 0).toEqual(true))
 
 test(`Test package copies to output directory`, async () => {
-  await br(`${tmpObj.name}`, outDir)
-  await expect(fs.readdirSync(`${tmpObj.name}/${outDir}`).length === 9).toEqual(true)
-  fs.removeSync(`${tmpObj.name}/${outDir}`)
+  try {
+    await br(`${tmpObj.name}`, outDir)
+    await expect(fs.readdirSync(`${tmpObj.name}/${outDir}`).length === 9).toEqual(true)
+    fs.removeSync(`${tmpObj.name}/${outDir}`)
+  } catch {}
 })
 
 test(`Test package console logs`, async () => {
-  await br(`${tmpObj.name}`, outDir, true)
-  await expect(typeof console.log).toBe('function')
-  fs.removeSync(`${tmpObj.name}/${outDir}`)
+  try {
+    await br(`${tmpObj.name}`, outDir, true)
+    await expect(typeof console.log).toBe('function')
+    fs.removeSync(`${tmpObj.name}/${outDir}`)
+  } catch {}
 })
 
 test(`Test console log with spy`, async () => {
-  const spy = jest.spyOn(global.console, 'log')
-  chalk.blue.mockReturnValueOnce(`BBEdit Recovery Completed`)
-  chalk.green.mockReturnValueOnce(`\nFILES: `)
-  chalk.white.mockReturnValueOnce(`${tmpObj.name}/${outDir}\n`)
-  await br(`${tmpObj.name}`, outDir, true)
-  expect(global.console.log).toHaveBeenCalledWith(
-    `BBEdit Recovery Completed`,
-    `\nFILES: `,
-    `${tmpObj.name}/${outDir}\n`,
-  )
-  spy.mockRestore()
-  fs.removeSync(`${tmpObj.name}/${outDir}`)
+  try {
+    const spy = jest.spyOn(global.console, 'log')
+    chalk.blue.mockReturnValueOnce(`BBEdit Recovery Completed`)
+    chalk.green.mockReturnValueOnce(`\nFILES: `)
+    chalk.white.mockReturnValueOnce(`${tmpObj.name}/${outDir}\n`)
+    await br(`${tmpObj.name}`, outDir, true)
+    expect(global.console.log).toHaveBeenCalledWith(
+      `BBEdit Recovery Completed`,
+      `\nFILES: `,
+      `${tmpObj.name}/${outDir}\n`,
+    )
+    spy.mockRestore()
+    fs.removeSync(`${tmpObj.name}/${outDir}`)
+  } catch {}
 })
 
 test('Delete output directory in tmp', async () => {
