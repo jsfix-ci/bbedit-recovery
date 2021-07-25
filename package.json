@@ -1,6 +1,6 @@
 {
   "name": "bbedit-recovery",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "NPM package that helps get settings from BBEdit",
   "main": "bin/index.js",
   "bin": {
