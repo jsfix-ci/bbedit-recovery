@@ -7,7 +7,7 @@ script/
 **/spec/
 **/test/
 **/tests/
-**/__tests__/
+__tests__/
 Tests/
 **/vendor/
 **/*_test.go
