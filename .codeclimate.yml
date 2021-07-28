@@ -1,14 +1,2 @@
-config/
-db/
-dist/
-features/
-**/node_modules/
-script/
-**/spec/
-**/test/
-**/tests/
-__tests__/
-Tests/
-**/vendor/
-**/*_test.go
-**/*.d.ts
+exclude_patterns:
+- "__tests_/"
