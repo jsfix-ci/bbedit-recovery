@@ -16,8 +16,8 @@ const cli = () => {
     .version(version)
     .name(name)
     .description(description)
-    .option('-d, --dest [folder]', 'Directory to be piped out to', process.cwd())
-    .option('-n, --name [string]', 'Optional name of the output directory', `bbedit-recovery`)
+    .option('-d, --dest [folder]','Directory to be piped out to').preset(process.cwd())
+    .option('-n, --name [string]','Optional name of the output directory').preset(`bbedit-recovery`)
     .action(async () => {
       const { dest, name } = program._optionValues
       await main(dest.trim(), name.trim(), true)
